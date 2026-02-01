@@ -1,0 +1,185 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RIVA K ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6c1d1, #d9c7ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* Moon */
+.moon {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 120px;
+  height: 120px;
+  background: #fff6e5;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255,255,255,0.8);
+  opacity: 0.9;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+img {
+  width: 280px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  margin-bottom: 20px;
+}
+
+.tap {
+  font-size: 1.2rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Valentine Glow */
+.valentine {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff9acb,
+    0 0 20px #ff7ab8,
+    0 0 40px #ff5fa9;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 10px #ff9acb,
+      0 0 20px #ff7ab8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #1c171a,
+      0 0 40px #ff85c1,
+      0 0 60px #833a5c;
+  }
+}
+
+span { color: #d80e4e; font-weight: 600; }
+</style>
+</head>
+
+<body onclick="nextMessage()">
+
+<div class="moon"></div>
+
+<audio id="bgMusic" loop>
+  <source src="c:\Users\DISHANTH\Downloads\Elvis_Presley_-_Can_t_Help_Falling_in_Love_Lyrics_LOW.mp4" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <img src="c:\Users\DISHANTH\Downloads\WhatsApp Image 2026-02-01 at 2.32.50 PM.jpeg" alt="Riva & Adish">
+  <div id="text" class="tap">💗 Tap MOON 💗</div>
+</div>
+
+<script>
+/* Stars */
+for (let i = 0; i < 40; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.top = Math.random() * 50 + "vh";
+  star.style.animationDelay = Math.random() * 2 + "s";
+  document.body.appendChild(star);
+}
+
+/* Messages */
+const messages = [
+  "RIVA K 💖",
+  "i love youu to the moon and back 🌙",
+  "every moment with you feels magical ✨",
+  "Be with me forever 🫴🏻🌸🌸",
+  "— Am Always There For U No Matter What 💞",
+  "<div class='valentine'>CAN U BE MY<br>VALENTINE? 💌</div>"
+];
+
+let index = -1;
+let musicStarted = false;
+
+function nextMessage() {
+  if (!musicStarted) {
+    document.getElementById("bgMusic").play();
+    musicStarted = true;
+  }
+
+  index++;
+  if (index < messages.length) {
+    document.getElementById("text").innerHTML = messages[index];
+  }
+}
+
+/* Hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
